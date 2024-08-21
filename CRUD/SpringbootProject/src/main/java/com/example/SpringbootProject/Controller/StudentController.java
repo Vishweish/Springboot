@@ -91,4 +91,25 @@ public class StudentController {
         return new ResponseEntity<>(status, HttpStatus.OK);
     }
 
-}
+    //Custom queries
+    @GetMapping("/Staticage18")
+    public ResponseEntity<List<StudentModel>> getAgeStatic(){
+        List<StudentModel> ageStatic = new ArrayList<>();
+        try{
+            ageStatic = studentService.getAgelistStatic();
+        }catch(Exception ex){
+            return new ResponseEntity<>(ageStatic,HttpStatus.BAD_REQUEST);
+        }return new ResponseEntity<>(ageStatic,HttpStatus.OK);
+    }
+
+    @GetMapping("/Dynamicage/{age1}/{age2}")
+    public ResponseEntity<List<StudentModel>> ageDynamic(@PathVariable int age1,@PathVariable int age2){
+        List<StudentModel> ageDynamic = new ArrayList<>();
+        try{
+            ageDynamic = studentService.getAgelistDynamic(age1,age2);
+        }catch(Exception ex){
+            return new ResponseEntity<>(ageDynamic,HttpStatus.BAD_REQUEST);
+        }return new ResponseEntity<>(ageDynamic,HttpStatus.OK);
+    }
+    }
+

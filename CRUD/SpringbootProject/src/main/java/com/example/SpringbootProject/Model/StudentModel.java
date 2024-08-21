@@ -13,7 +13,7 @@ public class StudentModel  {
     private  int id;
     private String name;
     private String email;
-    private String age;
+    private int age;
 
     @Override
     public String toString(){

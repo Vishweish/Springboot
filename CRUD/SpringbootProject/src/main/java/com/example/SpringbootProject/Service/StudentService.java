@@ -60,4 +60,23 @@ public class StudentService {
     public StudentModel findById(StudentModel id){
         return studentRepository.findById(id.getId()).orElse(null);
     }
+
+    public List<StudentModel> getAgelistStatic(){
+        List<StudentModel> ageStatic = new ArrayList<>();
+        try{
+            ageStatic = studentRepository.getStaticAgeList();
+        }catch (Exception ex){
+            System.out.println("Exception occured "+ex);
+    }return ageStatic;
+    }
+
+    public List<StudentModel> getAgelistDynamic(int age1,int age2){
+        List<StudentModel> ageDynamic = new ArrayList<>();
+        try{
+            ageDynamic = studentRepository.getDynamicAgeList(age1,age2);
+        }catch (Exception ex){
+            System.out.println("Exception occured "+ex);
+        }return ageDynamic;
+    }
+
 }
